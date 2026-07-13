@@ -32,7 +32,7 @@ export default function App() {
       title: 'ระบบจัดการใบอนุญาตประกัน',
       titleEn: 'Insurance License Management',
       description: 'EasyBroker Hub สำหรับตรวจสอบสถานะ ต่ออายุ และบริหารจัดการใบอนุญาตนายหน้าประกันภัยอย่างเป็นระบบ รวดเร็ว และปลอดภัย',
-      url: 'https://easybroker-hub.vercel.app/',
+      url: 'https://staff-insurance-license.vercel.app/',
       target: 'insurance_license_system',
       icon: FileCheck,
       themeColor: 'emerald',
@@ -47,13 +47,10 @@ export default function App() {
   const handleNavigate = (url: string, target: string, title: string) => {
     setNavigatingTo(title);
     
-    // Open in a named target to reuse existing tab/window, preventing multiple stackings
-    window.open(url, target);
-
-    // Reset navigating state after a brief visual confirmation
+    // Redirect in the same window after a short feedback delay to prevent popup blocker
     setTimeout(() => {
-      setNavigatingTo(null);
-    }, 2000);
+      window.location.href = url;
+    }, 800);
   };
 
   return (
@@ -165,7 +162,7 @@ export default function App() {
             <CheckCircle className="w-5 h-5 text-emerald-400 flex-shrink-0" />
             <div className="text-sm">
               <span className="font-semibold text-white">กำลังเปิด {navigatingTo}</span>
-              <p className="text-[10px] text-slate-400 mt-0.5">ระบบทำการเชื่อมต่อหน้าต่างเก่าเพื่อป้องกันหน้าต่างซ้อนกันเรียบร้อย</p>
+              <p className="text-[10px] text-slate-400 mt-0.5">เปิดลิงก์ในหน้าต่างหลักทันที ป้องกัน Popup Blocker เรียบร้อย</p>
             </div>
           </motion.div>
         )}
