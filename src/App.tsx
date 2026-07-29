@@ -31,7 +31,7 @@ export default function App() {
 
   return (
     <div 
-      className={`min-h-screen flex flex-col justify-between select-none font-sans antialiased p-4 sm:p-6 md:p-10 relative overflow-x-hidden transition-colors duration-300 gpu-accelerate ${
+      className={`min-h-screen flex flex-col justify-between select-none font-sans antialiased safe-area-top safe-area-bottom px-4 sm:px-6 md:px-10 relative overflow-x-hidden transition-colors duration-300 gpu-accelerate ${
         isDarkMode 
           ? 'bg-[#13161c] text-[#e3e5eb]' 
           : 'bg-[#ebdcd0] text-[#2c2621]'
