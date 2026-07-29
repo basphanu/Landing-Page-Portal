@@ -30,16 +30,16 @@ export default function App() {
   return (
     <div className="min-h-screen bg-[#13161c] text-[#e3e5eb] flex flex-col justify-between select-none font-sans antialiased p-4 sm:p-6 md:p-10 relative overflow-x-hidden">
       
-      {/* Background Soft Ambient Light */}
-      <div className="fixed inset-0 pointer-events-none z-0">
-        <div className="absolute top-[-10%] left-[20%] w-[500px] h-[500px] bg-[#f07c53]/10 rounded-full blur-[140px]" />
-        <div className="absolute bottom-[-10%] right-[10%] w-[600px] h-[600px] bg-[#64c4a7]/10 rounded-full blur-[160px]" />
+      {/* Background Soft Ambient Light (Optimized Radial Gradients for Safari) */}
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <div className="absolute top-[-10%] left-[10%] w-[500px] h-[500px] bg-[radial-gradient(circle_at_center,rgba(240,124,83,0.12)_0%,transparent_70%)]" />
+        <div className="absolute bottom-[-10%] right-[5%] w-[600px] h-[600px] bg-[radial-gradient(circle_at_center,rgba(100,196,167,0.12)_0%,transparent_70%)]" />
         {/* Fine Dot Grid */}
         <div className="absolute inset-0 bg-[radial-gradient(#2d3342_1px,transparent_1px)] bg-[size:24px_24px] opacity-40" />
       </div>
 
       {/* Top Header / Branding Bar */}
-      <header className="relative z-10 max-w-7xl mx-auto w-full mb-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 bg-[#1a1e28]/80 backdrop-blur-md p-6 rounded-3xl border border-[#2d3444] shadow-[0_10px_30px_rgba(0,0,0,0.35)]">
+      <header className="relative z-10 max-w-7xl mx-auto w-full mb-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 bg-[#1a1e28]/95 p-6 rounded-3xl border border-[#2d3444] shadow-lg gpu-accelerate">
         
         {/* Brand & Title */}
         <div className="flex items-center gap-4">
@@ -113,8 +113,8 @@ export default function App() {
             transition={{ duration: 0.4 }}
             className="md:col-span-7 bg-[#edebe4] text-[#1e232e] rounded-3xl p-8 md:p-10 shadow-[8px_16px_35px_rgba(0,0,0,0.35),inset_2px_2px_4px_rgba(255,255,255,0.9),inset_-2px_-2px_4px_rgba(0,0,0,0.08)] border border-white/60 relative overflow-hidden flex flex-col justify-between min-h-[420px]"
           >
-            {/* Soft Ambient Shadow Overlay */}
-            <div className="absolute -right-20 -top-20 w-80 h-80 bg-[#f07c53]/15 rounded-full blur-3xl pointer-events-none" />
+            {/* Soft Ambient Shadow Overlay (Optimized for Safari) */}
+            <div className="absolute -right-20 -top-20 w-80 h-80 bg-[radial-gradient(circle_at_center,rgba(240,124,83,0.18)_0%,transparent_70%)] pointer-events-none" />
 
             <div>
               {/* Header Badge & Title */}
@@ -218,8 +218,8 @@ export default function App() {
               activeTab === 'license' ? 'md:col-span-12' : 'md:col-span-5'
             }`}
           >
-            {/* Soft Ambient Glow Overlay */}
-            <div className="absolute -right-20 -bottom-20 w-80 h-80 bg-[#64c4a7]/20 rounded-full blur-3xl pointer-events-none" />
+            {/* Soft Ambient Glow Overlay (Optimized for Safari) */}
+            <div className="absolute -right-20 -bottom-20 w-80 h-80 bg-[radial-gradient(circle_at_center,rgba(100,196,167,0.22)_0%,transparent_70%)] pointer-events-none" />
 
             <div>
               {/* Header Badge & Title */}
