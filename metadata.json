@@ -1,5 +1,5 @@
 {
-  "name": "Application Portal",
+  "name": "Branch Support Service System",
   "description": "พอร์ทัลเข้าใช้งานระบบส่งยอดพนักงาน และระบบจัดการใบอนุญาตประกันภัย",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
