@@ -403,7 +403,7 @@ export default function App() {
 
               <button
                 onClick={() => handleNavigate(
-                  'https://easy-broker-system.vercel.app/',
+                  'https://easy-ins-system.vercel.app',
                   'insurance_license_system',
                   'ระบบจัดการใบอนุญาตประกัน'
                 )}
