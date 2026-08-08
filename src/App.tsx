@@ -14,12 +14,13 @@ import {
   Phone,
   Mail,
   CheckCircle2,
-  ExternalLink
+  ExternalLink,
+  Gauge
 } from 'lucide-react';
 
 export default function App() {
   const [navigatingTo, setNavigatingTo] = useState<string | null>(null);
-  const [activeTab, setActiveTab] = useState<'all' | 'staff' | 'license'>('all');
+  const [activeTab, setActiveTab] = useState<'all' | 'staff' | 'license' | 'mileage'>('all');
   const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
 
   const handleNavigate = (url: string, target: string, title: string) => {
@@ -155,6 +156,16 @@ export default function App() {
             >
               ใบอนุญาตประกัน
             </button>
+            <button
+              onClick={() => setActiveTab('mileage')}
+              className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all duration-200 cursor-pointer ${
+                activeTab === 'mileage'
+                  ? 'bg-gradient-to-b from-[#64c4a7] to-[#429c81] text-[#082a20] shadow-[0_4px_12px_rgba(100,196,167,0.35),inset_1px_1px_2px_rgba(255,255,255,0.6)] font-bold'
+                  : isDarkMode ? 'text-[#8e98a8] hover:text-white' : 'text-[#6d5e53] hover:text-[#2c231d]'
+              }`}
+            >
+              บันทึกเลขไมล์
+            </button>
           </div>
 
           {/* Light / Dark Mode Toggle Button */}
@@ -189,7 +200,7 @@ export default function App() {
               isDarkMode
                 ? 'bg-[#1e232e] text-white border-[#2d3444] shadow-[8px_16px_35px_rgba(0,0,0,0.4),inset_2px_2px_4px_rgba(255,255,255,0.08)]'
                 : 'bg-[#f7f2eb] text-[#2c231d] border-white/90 shadow-[8px_18px_35px_rgba(180,150,130,0.25),inset_2px_2px_4px_rgba(255,255,255,0.95)]'
-            } ${activeTab === 'staff' ? 'md:col-span-12' : 'md:col-span-7'}`}
+            } ${activeTab === 'staff' ? 'md:col-span-12' : 'md:col-span-6 lg:col-span-4'}`}
           >
             {/* Ambient Radial Gradient Layer */}
             <div className="absolute -right-20 -top-20 w-80 h-80 bg-[radial-gradient(circle_at_center,rgba(242,163,133,0.25)_0%,transparent_70%)] pointer-events-none" />
@@ -326,7 +337,7 @@ export default function App() {
               isDarkMode
                 ? 'bg-[#8cb2cb]/20 border-[#8cb2cb]/30 text-white shadow-[8px_16px_35px_rgba(0,0,0,0.4)]'
                 : 'bg-[#8cb2cb] text-[#0f2738] border-white/60 shadow-[8px_18px_35px_rgba(140,178,203,0.35),inset_2px_2px_4px_rgba(255,255,255,0.7)]'
-            } ${activeTab === 'license' ? 'md:col-span-12' : 'md:col-span-5'}`}
+            } ${activeTab === 'license' ? 'md:col-span-12' : 'md:col-span-6 lg:col-span-4'}`}
           >
             {/* Ambient Glow Overlay */}
             <div className="absolute -right-20 -bottom-20 w-80 h-80 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.25)_0%,transparent_70%)] pointer-events-none" />
@@ -414,6 +425,113 @@ export default function App() {
                 }`}
               >
                 <span>เข้าสู่ระบบ EasyBroker Hub</span>
+                <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+              </button>
+            </div>
+
+          </motion.div>
+        )}
+
+        {/* ==================================================== */}
+        {/* CARD 3: MILEAGE TRACKER SYSTEM (3D Clay Tile) */}
+        {/* ==================================================== */}
+        {(activeTab === 'all' || activeTab === 'mileage') && (
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.35, delay: 0.12 }}
+            className={`rounded-3xl p-8 md:p-10 border relative overflow-hidden flex flex-col justify-between min-h-[420px] transition-colors duration-300 ${
+              isDarkMode
+                ? 'bg-[#64c4a7]/20 border-[#64c4a7]/30 text-white shadow-[8px_16px_35px_rgba(0,0,0,0.4)]'
+                : 'bg-[#64c4a7] text-[#082a20] border-white/60 shadow-[8px_18px_35px_rgba(100,196,167,0.35),inset_2px_2px_4px_rgba(255,255,255,0.7)]'
+            } ${activeTab === 'mileage' ? 'md:col-span-12' : 'md:col-span-12 lg:col-span-4'}`}
+          >
+            {/* Ambient Glow Overlay */}
+            <div className="absolute -right-20 -bottom-20 w-80 h-80 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.25)_0%,transparent_70%)] pointer-events-none" />
+
+            <div>
+              {/* Header Badge & Title */}
+              <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center gap-3">
+                  <div 
+                    className={`w-12 h-12 rounded-2xl flex items-center justify-center shadow-md border ${
+                      isDarkMode 
+                        ? 'bg-[#64c4a7] text-[#082a20] border-white/40' 
+                        : 'bg-white text-[#2a8068] border-white/80 shadow-[0_6px_16px_rgba(42,128,104,0.25)]'
+                    }`}
+                  >
+                    <Gauge className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <span className={`text-[10px] font-bold uppercase tracking-[0.2em] ${isDarkMode ? 'text-[#64c4a7]' : 'text-[#0e523f]'}`}>
+                      MILEAGE SYSTEM
+                    </span>
+                    <h2 className={`text-2xl md:text-3xl font-extrabold tracking-tight ${isDarkMode ? 'text-white' : 'text-[#082a20]'}`}>
+                      บันทึกข้อมูลเลขไมล์
+                    </h2>
+                  </div>
+                </div>
+
+                <span 
+                  className={`text-[10px] font-bold tracking-widest px-3 py-1.5 rounded-xl border ${
+                    isDarkMode 
+                      ? 'bg-[#64c4a7]/20 text-[#bfe8db] border-[#64c4a7]/30' 
+                      : 'bg-white/40 text-[#082a20] border-white/60 shadow-inner'
+                  }`}
+                >
+                  MILEAGE TRACKER
+                </span>
+              </div>
+
+              <p className={`text-sm font-normal leading-relaxed mb-8 ${isDarkMode ? 'text-[#bfe8db]' : 'text-[#0e4032]'}`}>
+                ระบบบันทึกและติดตามข้อมูลเลขไมล์การเดินทาง คำนวณระยะทาง ตรวจสอบประวัติการใช้งานยานพาหนะขององค์กรได้อย่างถูกต้องและเป็นระบบ
+              </p>
+
+              {/* 3D Tactile Dial / Features Indicator */}
+              <div 
+                className={`p-5 rounded-2xl border mb-8 flex items-center justify-between gap-4 ${
+                  isDarkMode 
+                    ? 'bg-[#13161c]/60 border-[#64c4a7]/30' 
+                    : 'bg-white/40 border-white/80 shadow-[inset_2px_2px_4px_rgba(255,255,255,0.8)]'
+                }`}
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-11 h-11 rounded-full bg-gradient-to-br from-[#f2efe6] to-[#d8d4c7] flex items-center justify-center shadow-sm border border-white">
+                    <Activity className="w-5 h-5 text-[#1e5d4c]" />
+                  </div>
+                  <div>
+                    <span className={`text-xs font-bold block ${isDarkMode ? 'text-white' : 'text-[#082a20]'}`}>Odometer & Distance Logging</span>
+                    <span className={`text-[11px] ${isDarkMode ? 'text-[#a2d8c8]' : 'text-[#104a3a]'}`}>บันทึกระยะทางและประวัติการขับขี่</span>
+                  </div>
+                </div>
+
+                <div className="hidden sm:flex items-center gap-1.5">
+                  <div className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
+                  <span className={`text-xs font-semibold ${isDarkMode ? 'text-emerald-400' : 'text-emerald-950'}`}>Active</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Direct CTA Tactile 3D Button */}
+            <div className={`pt-4 border-t flex flex-col sm:flex-row items-center justify-between gap-4 ${isDarkMode ? 'border-[#64c4a7]/20' : 'border-white/50'}`}>
+              <span className={`text-xs font-medium flex items-center gap-1.5 ${isDarkMode ? 'text-[#a2d8c8]' : 'text-[#0e4032]'}`}>
+                <ShieldCheck className="w-3.5 h-3.5" />
+                ระบบบันทึกข้อมูลระยะทางมาตรฐานองค์กร
+              </span>
+
+              <button
+                onClick={() => handleNavigate(
+                  'https://mileage-tracker-bice.vercel.app',
+                  'mileage_tracker_system',
+                  'ระบบบันทึกข้อมูลเลขไมล์'
+                )}
+                className={`w-full sm:w-auto px-8 py-4 rounded-2xl font-bold text-sm shadow-md active:scale-95 transition-all duration-150 flex items-center justify-center gap-2 group cursor-pointer ${
+                  isDarkMode
+                    ? 'bg-gradient-to-r from-[#64c4a7] to-[#429c81] text-[#082a20] hover:shadow-lg'
+                    : 'bg-[#082a20] text-white hover:bg-[#0f4233] shadow-[0_10px_25px_rgba(8,42,32,0.3)]'
+                }`}
+              >
+                <span>เข้าสู่ระบบบันทึกเลขไมล์</span>
                 <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
               </button>
             </div>
